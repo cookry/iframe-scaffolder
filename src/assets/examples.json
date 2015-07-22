@@ -28,14 +28,5 @@
     ],
     "layout": "tabs",
     "theme": "teal"
-  },
-  {
-    "urls": [
-      "Victoires par pays|http://athomascommin.cartodb.com/viz/9cceb7c0-7165-11e4-a5d4-0e018d66dc29/embed_map",
-      "Ses victoires par discipline|http://chart.dwp.lequipe.fr/9fYO6/index.html",
-      "Victoires par saison|http://chart.dwp.lequipe.fr/vUO4B/index.html"
-    ],
-    "layout": "narrative",
-    "theme": "red"
   }
 ]
