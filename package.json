@@ -2,8 +2,8 @@
   "name": "iframeScaffolder",
   "version": "0.0.0",
   "dependencies": {},
-  "repository": "https://github.com/pirhoo/iframe-scaffolder/",
-  "staticRemote": "git@github.com:Pirhoo/iframe-scaffolder.git",
+  "repository": "https://github.com/googletrends/iframe-scaffolder/",
+  "staticRemote": "git@github.com:googletrends/iframe-scaffolder.git",
   "devDependencies": {
     "gulp": "^3.8.0",
     "gulp-autoprefixer": "^0.0.6",
