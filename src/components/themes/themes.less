@@ -1,10 +1,14 @@
 .scaffolder {
   // Theming  overload
-  html body &--default { .scaffolder-theme(); }
-  html body &--ebony-clay { .scaffolder-theme(#f0f3f5, @gray-dark, #22313F, white); }
-  html body &--picton-blue { .scaffolder-theme(white, @gray-dark, #59ABE3, white); }
-  html body &--silver-tree { .scaffolder-theme(white, @gray-dark, #68C3A3, white); }
-  html body &--sunset-orange { .scaffolder-theme(#f5f2f2, @gray-dark, #F64747, white); }
-  html body &--monza-red { .scaffolder-theme(#fff, @gray-dark, #CF000F, white, #140000); }
-  html body &--eucalyptus { .scaffolder-theme(#fff, @gray-dark, #53BF6B, white, #2d693a); }
+  html body &--default { .scaffolder-theme(@body-bg, @text-color, @brand-primary, white, white, @text-color); }
+  html body &--blue-grey { .scaffolder-theme(@body-bg, #263238, #607d8b, white); }
+  html body &--pink { .scaffolder-theme(@body-bg, #880e4f, #e91e63, white); }
+  html body &--grey { .scaffolder-theme(@body-bg, #424242, #9e9e9e, white); }
+  html body &--blue { .scaffolder-theme(@body-bg, #0d47a1, #2196f3, white); }
+  html body &--indigo { .scaffolder-theme(@body-bg, #1a237e, #3f51b5, white); }
+  html body &--red { .scaffolder-theme(@body-bg, #b71c1c, #f44336, white); }
+  html body &--deep-orange { .scaffolder-theme(@body-bg, #bf360c, #ff5722, white); }
+  html body &--yellow { .scaffolder-theme(@body-bg, #f57f17, #ffeb3b, #000); }
+  html body &--teal { .scaffolder-theme(@body-bg, #004d40, #00897b, white); }
+  html body &--green { .scaffolder-theme(@body-bg, #1b5e20, #4caf50, white); }
 }

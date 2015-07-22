@@ -12,16 +12,29 @@ angular.module('iframeScaffolder').controller('MainCtrl', function ($scope, $sta
   $scope.width      = 600;
   $scope.height     = 450;
   $scope.examples   = [];
-  $scope.themes     = {
-    "default": "Default",
-    "ebony-clay": "Ebony clay",
-    "picton-blue": "Picton blue",
-    "silver-tree": "Silver tree",
-    "eucalyptus": "Eucalyptus",
-    "sunset-orange": "Sunset orange",
-    "monza-red": "Monza red"
-  };
+  $scope.themes     = [
+    { slug: 'default', label: 'Default' },
+    { slug: 'blue-grey', label: 'Material blue grey' },
+    { slug: 'pink', label: 'Material pink' },
+    { slug: 'grey', label: 'Material grey' },
+    { slug: 'blue', label: 'Material blue' },
+    { slug: 'indigo', label: 'Material indigo' },
+    { slug: 'red', label: 'Material red' },
+    { slug: 'deep-orange', label: 'Material deep orange' },
+    { slug: 'yellow', label: 'Material yellow' },
+    { slug: 'teal', label: 'Material teal' },
+    { slug: 'green', label: 'Material gree' }
+  ];
 
+  $scope.getTheme = function(slug) {
+    var theme = null;
+    angular.forEach($scope.themes, function(one) {
+      if( one.slug === slug ) {
+        theme = one;
+      }
+    });
+    return theme;
+  };
   // Get sample datasets
   $http.get('assets/examples.json').success(function(data) {
     $scope.examples = data;
