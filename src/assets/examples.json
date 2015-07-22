@@ -7,7 +7,7 @@
       "GDP|http://charts-datawrapper.s3.amazonaws.com/q1QdD/index.html?rev=96"
     ],
     "layout": "menu",
-    "theme": "sunset-orange"
+    "theme": "orange"
   },
   {
     "urls": [
@@ -17,7 +17,7 @@
       "GDP|http://charts-datawrapper.s3.amazonaws.com/q1QdD/index.html?rev=96"
     ],
     "layout": "narrative",
-    "theme": "ebony-clay"
+    "theme": "blue-grey"
   },
   {
     "urls": [
@@ -27,7 +27,7 @@
       "GDP|http://charts-datawrapper.s3.amazonaws.com/q1QdD/index.html?rev=96"
     ],
     "layout": "tabs",
-    "theme": "eucalyptus"
+    "theme": "teal"
   },
   {
     "urls": [
@@ -36,6 +36,6 @@
       "Victoires par saison|http://chart.dwp.lequipe.fr/vUO4B/index.html"
     ],
     "layout": "narrative",
-    "theme": "monza-red"
+    "theme": "red"
   }
 ]
