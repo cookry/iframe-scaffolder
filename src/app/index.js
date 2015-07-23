@@ -4,7 +4,7 @@ angular.module('iframeScaffolder', ['ngSanitize', 'ui.router', 'ui.bootstrap', '
   .config(function ($stateProvider, $urlRouterProvider, $sceProvider, $tooltipProvider, uiZeroclipConfigProvider) {
     $stateProvider
       .state('home', {
-        url: '/?urls&layout&theme&title&description',
+        url: '/',
         params: {
           urls: { value: ''},
           layout: { value: 'menu'},
@@ -19,6 +19,10 @@ angular.module('iframeScaffolder', ['ngSanitize', 'ui.router', 'ui.bootstrap', '
         url: '/view?urls&layout&theme&title&description',
         templateUrl: 'app/view/view.html',
         controller: 'ViewCtrl',
+      })
+      .state('fork', {
+        url: '/fork?urls&layout&theme&title&description',
+        controller: 'ForkCtrl'
       });
 
     $urlRouterProvider.otherwise('/');
