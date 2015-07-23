@@ -14,16 +14,16 @@ angular.module('iframeScaffolder').controller('MainCtrl', function ($scope, $sta
   $scope.examples   = [];
   $scope.themes     = [
     { slug: 'default', label: 'Default' },
-    { slug: 'blue-grey', label: 'Material blue grey' },
-    { slug: 'pink', label: 'Material pink' },
-    { slug: 'grey', label: 'Material grey' },
-    { slug: 'blue', label: 'Material blue' },
-    { slug: 'indigo', label: 'Material indigo' },
-    { slug: 'red', label: 'Material red' },
-    { slug: 'deep-orange', label: 'Material deep orange' },
-    { slug: 'yellow', label: 'Material yellow' },
-    { slug: 'teal', label: 'Material teal' },
-    { slug: 'green', label: 'Material gree' }
+    { slug: 'blue-grey', label: 'Blue grey' },
+    { slug: 'pink', label: 'Pink' },
+    { slug: 'grey', label: 'Grey' },
+    { slug: 'blue', label: 'Blue' },
+    { slug: 'indigo', label: 'Indigo' },
+    { slug: 'red', label: 'Red' },
+    { slug: 'deep-orange', label: 'Deep orange' },
+    { slug: 'yellow', label: 'Yellow' },
+    { slug: 'teal', label: 'Teal' },
+    { slug: 'green', label: 'Gree' }
   ];
 
   $scope.getTheme = function(slug) {
