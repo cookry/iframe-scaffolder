@@ -93,10 +93,10 @@
       <div class="panel editor__step panel-default" ng-class="{ 'editor__step--disable': !settings.urls.length }">
         <div class="editor__step__label"></div>
         <div class="panel-body">
-          <div class="pull-right dropdown">
+          <div class="pull-right" dropdown>
             <span class="btn-group">
               <i class="scaffolder--{{settings.theme}}__preview editor__step__theme-preview disabled btn btn-xs"></i>
-              <button class="btn btn-default btn-xs dropdown-toggle">
+              <button class="btn btn-default btn-xs" dropdown-toggle>
                 {{ getTheme(settings.theme).label }} &nbsp;<i class="caret"></i>
               </button>
             </span>
@@ -118,13 +118,13 @@
           <div class="form-group">
             <label for="input-title" class="control-label col-sm-4">Choose a title</label>
             <div class="col-sm-8">
-              <input type="text" class="form-control" ng-model="settings.title" id="input-title">
+              <input type="text" class="form-control" ng-model="title" id="input-title">
             </div>
           </div>
           <div class="form-group editor__step__last-group">
             <label for="input-description" class="control-label col-sm-4">Describe</label>
             <div class="col-sm-8">
-              <textarea class="form-control" ng-model="settings.description" id="input-description"></textarea>
+              <textarea class="form-control" ng-model="description" id="input-description"></textarea>
             </div>
           </div>
         </div>
@@ -181,14 +181,14 @@
               <a class="btn btn-link" href="{{getViewUrl()}}" target="_blank" tooltip="Open the iframe in a new window">
                 <i class="glyphicon glyphicon-new-window"></i>
               </a>
-              <a class="btn btn-link" tooltip="Permalink to edit the same mosaic" ui-sref="fork(getViewParams())">
+              <a class="btn btn-link" tooltip="Fork this mosaic" ui-sref="fork(getViewParams())">
                 <i class="glyphicon glyphicon-edit"></i>
               </a>
             </span>
           </div>
         </div>
         <div class="editor__preview__scaffolder">
-          <scaffolder urls="settings.urls" iframe-layout="settings.layout" theme="settings.theme" title="settings.title" description="settings.description" />
+          <scaffolder urls="settings.urls" iframe-layout="settings.layout" theme="settings.theme"  title="settings.title" description="settings.description" />
         </div>
       </div>
     </div>
