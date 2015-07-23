@@ -20,6 +20,7 @@
         &&.active {
           font-weight: bold;
           & > a, & > a:hover {
+            outline:0;
             color:@text-color;
             background:@gray-lighter;
           }
@@ -31,6 +32,9 @@
   &--menu &__container__menu {
     width:25%;
     padding:5px;
+    a {
+      border-right:transparent 3px solid;
+    }
   }
 
   &--menu &__container__iframe {
@@ -44,6 +48,9 @@
     width:20000%;
     padding:5px;
     white-space: nowrap;
+    a {
+      border-bottom:transparent 3px solid;
+    }
   }
 
   &--narrative &__container__menu {
