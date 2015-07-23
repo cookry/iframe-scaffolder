@@ -120,6 +120,7 @@ angular.module('iframeScaffolder').controller('MainCtrl', function ($scope, $sta
   };
 
   $scope.$watch('urls + layout', function() {
+    console.log( JSON.stringify({urls: $scope.urls}, 4) )
     // New instance of the scaffolder class
     $scope.scaffolder = new Scaffolder($scope.urls, $scope.layout);
   }, true);
