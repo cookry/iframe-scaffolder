@@ -80,7 +80,9 @@ angular.module('iframeScaffolder').controller('MainCtrl', function ($scope, $sta
     var params = {
       urls: $scope.urls.join(','),
       layout: $scope.layout,
-      theme: $scope.theme
+      theme: $scope.theme,
+      title: $scope.title,
+      description: $scope.description
     };
     return $state.href('view', params, {absolute: true});
   };

@@ -8,7 +8,9 @@ angular.module('iframeScaffolder').directive('scaffolder', function() {
     scope: {
       urls: '=',
       iframeLayout: '=',
-      theme: '='
+      theme: '=',
+      title: '=',
+      description: '='
     }
   };
 });

@@ -1,5 +1,8 @@
 <div class="scaffolder scaffolder--{{iframeLayout}} scaffolder--{{theme}}"  layout="column" layout-align="start start">
-  <div class="scaffolder__header"></div>
+  <div class="scaffolder__header">
+    <h3 class="scaffolder__header__title" ng-if="title">{{ title }}</h3>
+    <p class="scaffolder__header__description lead" ng-if="description">{{ description }}</p>
+  </div>
   <div class="scaffolder__container" flex>
     <aside ng-show="scaffolder.hasMenu()" class="scaffolder__container__menu">
       <ul class="nav nav-pills" ng-class="{ 'nav-stacked': iframeLayout === 'menu' }">
