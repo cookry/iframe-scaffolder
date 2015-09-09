@@ -14,7 +14,7 @@
           </a>
         </li>
       </ul>
-      <h4 class="scaffolder__container__title">{{scaffolder.getActive().label}}</h4>
+      <h4 class="scaffolder__container__title">{{ scaffolder.getActive( 'Iframe ' + ($index + 1) ).label }}</h4>
     </aside>
     <iframe frameborder="0"
             class="scaffolder__container__iframe"
@@ -29,14 +29,30 @@
     <a target="_blank" href="//www.google.com/trends/">
       <img src="assets/images/googletrends.png" height="18" alt="Google  Trends" />
     </a>
-    <div class="scaffolder__footer__sharing pull-right hidden">
+    <div class="scaffolder__footer__sharing pull-right" ng-if="options.sharing && scaffolder.hasMenu() && scaffolder.urls.length">
+      Share this view&nbsp;
       <a socialshare
-         socialshare-provider="twitter">
-        T
+         socialshare-text="{{ scaffolder.getActive( 'Iframe ' + ($index + 1) ).label }}"
+         socialshare-url="{{ scaffolder.viewUrl(scaffolder.active) }}"
+         socialshare-provider="twitter"
+         class="scaffolder__footer__sharing__twitter">
+        <i class="fa fa-fw fa-twitter"></i>
+        <span class="sr-only">Twitter</span>
       </a>
       <a socialshare
-         socialshare-provider="facebook">
-        F
+         socialshare-text="{{ scaffolder.getActive().label }}"
+         socialshare-url="{{ scaffolder.viewUrl(scaffolder.active) }}"
+         socialshare-provider="facebook"
+         socialshare-type="feed"
+         socialshare-to=""
+         socialshare-from=""
+         socialshare-ref=""
+         socialshare-display="popup"
+         socialshare-via="%%FACEBOOK_APP_ID%%"
+         socialshare-redirect-uri="https://facebook.com"
+         class="scaffolder__footer__sharing__facebook">
+        <i class="fa fa-fw fa-facebook"></i>
+        <span class="sr-only">Facebook</span>
       </a>
     </div>
   </div>

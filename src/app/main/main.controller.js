@@ -5,17 +5,18 @@ angular.module('iframeScaffolder').controller('MainCtrl', function ($scope, $sta
   // Regex code is obtained from angular https://github.com/angular/angular.js/blob/master/src/ng/directive/input.js
   var URL_REGEXP = /^(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?$/;
 
-  $scope.scaffolder = new Scaffolder();
   // Mosaic options
   $scope.options = {
     'active': 0,
+    'sharing': 1,
     'layout': $stateParams.layout || 'menu',
     'theme': $stateParams.theme || 'default',
     'urls': !$stateParams.urls || $stateParams.urls === '' ? [] : $stateParams.urls.split(','),
     'title': $stateParams.title,
     'description': $stateParams.description
   };
-
+  // Default Scaffolder instance
+  $scope.scaffolder = new Scaffolder($scope.options);
   $scope.width      = 600;
   $scope.height     = 450;
   $scope.examples   = [];
@@ -83,19 +84,8 @@ angular.module('iframeScaffolder').controller('MainCtrl', function ($scope, $sta
     $scope.options.urls.splice(index, 1);
   };
 
-  $scope.getViewParams = function() {
-    return {
-      urls: $scope.options.urls.join(','),
-      layout: $scope.options.layout,
-      theme: $scope.options.theme,
-      active: $scope.options.active,
-      title: $scope.options.title,
-      description: $scope.options.description
-    };
-  };
-
   $scope.getViewUrl = function() {
-    return $state.href('view', $scope.getViewParams(), {absolute: true});
+    return $scope.scaffolder.viewUrl();
   };
 
   $scope.getViewIframe = function() {
@@ -130,7 +120,7 @@ angular.module('iframeScaffolder').controller('MainCtrl', function ($scope, $sta
 
   $scope.$watch('options', function() {
     // New instance of the scaffolder class
-    $scope.scaffolder = new Scaffolder($scope.options.urls, $scope.options.layout, $scope.options.active);
+    $scope.scaffolder = new Scaffolder($scope.options);
   }, true);
 
 });

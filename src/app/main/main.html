@@ -37,7 +37,7 @@
                   Edit label
                 </button>
                 <button type="button" class="btn btn-default" ng-click="removeUrl($index)" tooltip="Remove this iframe">
-                  <i class="fa fa-trash"></i>
+                  <i class="fa fa-trash-o"></i>
                 </button>
               </div>
               <a ng-href="{{scaffolder.url($index, true)}}" target="_blank" class="editor__step__url__value">
@@ -160,17 +160,24 @@
             <br class="clearfix" />
             <div class="row">
               <div class="col-xs-6">
-                <label>
+                <label for="input-active">
                   Choose the 1<sup>st</sup> iframe
                 </label>
               </div>
               <div class="col-xs-6">
-                <select ng-model="options.active" class="form-control input-sm">
+                <select id="input-active" ng-model="options.active" class="form-control input-sm">
                   <option value="{{$index}}" ng-repeat="url in options.urls track by $index">
                     {{scaffolder.label($index)}}
                   </option>
                 </select>
               </div>
+            </div>
+            <div class="checkbox">
+              <label for="input-sharing">
+                <input type="checkbox" ng-model="options.sharing" ng-true-value="1" ng-false-value="0" id="input-sharing" />
+                Allow iframe sharing
+              </label>
+              <p class="text-muted small">The user will be able to share each iframe individually.</p>
             </div>
           </div>
         </div>
@@ -199,7 +206,7 @@
               <a class="btn btn-link" href="{{getViewUrl()}}" target="_blank" tooltip="Open the iframe in a new window">
                 <i class="fa fa-external-link"></i>
               </a>
-              <a class="btn btn-link" tooltip="Permalink to edit the same mosaic" ui-sref="fork(getViewParams())">
+              <a class="btn btn-link" tooltip="Permalink to edit the same mosaic" ui-sref="fork(scaffolder.serialized())">
                 <i class="fa fa-edit"></i>
               </a>
             </span>

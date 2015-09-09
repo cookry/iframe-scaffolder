@@ -16,7 +16,7 @@ angular.module('iframeScaffolder', ['ngSanitize', 'ui.router', 'ui.bootstrap', '
         controller: 'MainCtrl'
       })
       .state('view', {
-        url: '/view?urls&layout&theme&title&description&active',
+        url: '/view?urls&layout&theme&title&description&active&sharing',
         templateUrl: 'app/view/view.html',
         controller: 'ViewCtrl',
       })
