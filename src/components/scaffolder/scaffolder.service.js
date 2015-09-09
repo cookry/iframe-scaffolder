@@ -1,15 +1,36 @@
 'use strict';
 
-angular.module('iframeScaffolder').service('Scaffolder', function() {
-  function Scaffolder(urls, layout, active) {
-    angular.extend(this, {
-      urls  : urls   || [],
-      layout: layout || 'menu'
-    });
+angular.module('iframeScaffolder').service('Scaffolder', function($state) {
+  // Defauult scaffolder options
+  var DEFAULTS_OPTIONS = {
+    urls  : [],
+    active: 0,
+    layout: 'menu'
+  };
+
+  function Scaffolder(options) {
+    // Extend the given options with the default one
+    options = angular.extend( angular.copy(DEFAULTS_OPTIONS), options);
+    angular.extend(this, options);
     // Activate the right url
-    this.activate(active || 0);
+    this.activate( parseInt(options.active || 0) );
     return this;
   }
+
+  Scaffolder.prototype.serialized = function(active) {
+    // Exclude unserializable attributes
+    var options = angular.fromJson( angular.toJson(this) );
+    // Override URLs list for better serialization
+    options.urls = options.urls.join(',');
+    // Override active iframe
+    options.active = active || options.active || 0;
+    // Returns the copy of the object
+    return options;
+  };
+
+  Scaffolder.prototype.viewUrl = function(active) {
+    return $state.href('view', this.serialized(active), {absolute: true});
+  };
 
   Scaffolder.prototype.url = function(index, getter) {
     var url = this.urls[index];
@@ -34,9 +55,9 @@ angular.module('iframeScaffolder').service('Scaffolder', function() {
     this.active = index < this.urls.length ? index : 0;
   };
 
-  Scaffolder.prototype.getActive = function() {
+  Scaffolder.prototype.getActive = function(replacement) {
     return {
-      label: this.label(this.active),
+      label: this.label(this.active, replacement),
       url: this.url(this.active)
     };
   };

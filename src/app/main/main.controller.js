@@ -5,16 +5,18 @@ angular.module('iframeScaffolder').controller('MainCtrl', function ($scope, $sta
   // Regex code is obtained from angular https://github.com/angular/angular.js/blob/master/src/ng/directive/input.js
   var URL_REGEXP = /^(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?$/;
 
-  $scope.scaffolder = new Scaffolder();
-  // Mosaic settings
-  $scope.settings = {
+  // Mosaic options
+  $scope.options = {
+    'active': 0,
+    'sharing': 1,
     'layout': $stateParams.layout || 'menu',
     'theme': $stateParams.theme || 'default',
     'urls': !$stateParams.urls || $stateParams.urls === '' ? [] : $stateParams.urls.split(','),
     'title': $stateParams.title,
     'description': $stateParams.description
   };
-
+  // Default Scaffolder instance
+  $scope.scaffolder = new Scaffolder($scope.options);
   $scope.width      = 600;
   $scope.height     = 450;
   $scope.examples   = [];
@@ -73,27 +75,17 @@ angular.module('iframeScaffolder').controller('MainCtrl', function ($scope, $sta
     // Avoid adding null value
     if(url === null) { return; }
     // Add the url to the list
-    $scope.settings.urls.push(url.replace(/,/g, '%2C'));
+    $scope.options.urls.push(url.replace(/,/g, '%2C'));
     // Reset form value
     $scope.newUrl = null;
   };
 
   $scope.removeUrl = function(index) {
-    $scope.settings.urls.splice(index, 1);
-  };
-
-  $scope.getViewParams = function() {
-    return {
-      urls: $scope.settings.urls.join(','),
-      layout: $scope.settings.layout,
-      theme: $scope.settings.theme,
-      title: $scope.settings.title,
-      description: $scope.settings.description
-    };
+    $scope.options.urls.splice(index, 1);
   };
 
   $scope.getViewUrl = function() {
-    return $state.href('view', $scope.getViewParams(), {absolute: true});
+    return $scope.scaffolder.viewUrl();
   };
 
   $scope.getViewIframe = function() {
@@ -105,7 +97,7 @@ angular.module('iframeScaffolder').controller('MainCtrl', function ($scope, $sta
 
   $scope.pickExample = function() {
     var example = $scope.examples[Math.floor(Math.random() * $scope.examples.length)];
-    angular.extend($scope.settings, angular.copy(example));
+    angular.extend($scope.options, angular.copy(example));
   };
 
   $scope.editLabel = function(index) {
@@ -119,16 +111,16 @@ angular.module('iframeScaffolder').controller('MainCtrl', function ($scope, $sta
     $scope.labels = {};
     // Create a new URL with the label as prefix
     if(label !== '') {
-      $scope.settings.urls[index] = label + '|' + $scope.scaffolder.url(index, true);
+      $scope.options.urls[index] = label + '|' + $scope.scaffolder.url(index, true);
     // Create a new URL without prefix
     } else {
-      $scope.settings.urls[index] = $scope.scaffolder.url(index, true);
+      $scope.options.urls[index] = $scope.scaffolder.url(index, true);
     }
   };
 
-  $scope.$watch('settings', function() {
+  $scope.$watch('options', function() {
     // New instance of the scaffolder class
-    $scope.scaffolder = new Scaffolder($scope.settings.urls, $scope.settings.layout);
+    $scope.scaffolder = new Scaffolder($scope.options);
   }, true);
 
 });

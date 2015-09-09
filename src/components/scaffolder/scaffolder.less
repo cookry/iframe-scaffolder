@@ -97,7 +97,7 @@
     .pull-left, .pull-right {
       position:relative;
       a:after, a:before {
-        font-family: "Glyphicons Halflings";
+        font-family: "FontAwesome";
         font-size:0.9em;
         position: absolute;
         top:50%;
@@ -108,14 +108,14 @@
     .pull-left a {
       padding-left:30px;
       &:before {
-        content: "\e079";
+        content: "\f053";
         left:10px;
       }
     }
     .pull-right a {
       padding-right:30px;
       &:after {
-        content: "\e080";
+        content: "\f054";
         right:10px;
       }
     }
@@ -167,7 +167,20 @@
     width:100%;
     padding:5px 15px;
     border-top:1px solid #ddd;
-    background:white;
+    background:white;    
+
+    &__sharing {
+
+      &__twitter,
+      &__twitter:hover {
+        color:#55ACEE;
+      }
+
+      &__facebook,
+      &__facebook:hover {
+        color:#3F4B9A;
+      }
+    }
   }
 
 }

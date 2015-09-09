@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('iframeScaffolder', ['ngSanitize', 'ui.router', 'ui.bootstrap', 'ui.validate', 'ui.sortable', 'zeroclipboard', 'ngMaterial'])
+angular.module('iframeScaffolder', ['ngSanitize', 'ui.router', 'ui.bootstrap', 'ui.validate', 'ui.sortable', 'zeroclipboard', 'ngMaterial', '720kb.socialshare'])
   .config(function ($stateProvider, $urlRouterProvider, $sceProvider, $tooltipProvider, uiZeroclipConfigProvider) {
     $stateProvider
       .state('home', {
@@ -16,7 +16,7 @@ angular.module('iframeScaffolder', ['ngSanitize', 'ui.router', 'ui.bootstrap', '
         controller: 'MainCtrl'
       })
       .state('view', {
-        url: '/view?urls&layout&theme&title&description',
+        url: '/view?urls&layout&theme&title&description&active&sharing',
         templateUrl: 'app/view/view.html',
         controller: 'ViewCtrl',
       })
