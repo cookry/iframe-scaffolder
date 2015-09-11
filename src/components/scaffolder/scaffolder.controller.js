@@ -4,6 +4,7 @@ angular.module('iframeScaffolder').controller('ScaffolderCtrl', function ($scope
 
   var options = $scope.options;
   $scope.scaffolder = new Scaffolder(options);
+  $scope.displaySharingPopup = false;
 
   $scope.iframeWidth = function() {
     switch(options.layout) {
@@ -32,6 +33,13 @@ angular.module('iframeScaffolder').controller('ScaffolderCtrl', function ($scope
     } else {
       return (100/(options.urls.length-1)) + '%';
     }
+  };
+
+  $scope.getViewIframe = function() {
+    var url = $scope.scaffolder.viewUrl(),
+      width = '100%',
+     height = $scope.height || 450;
+    return '<iframe src="' + url + '" width="' + width + '" height="' + height + '" frameborder="0" allowfullscreen></iframe>';
   };
 
   $scope.menuLinkClasses = function(index) {
