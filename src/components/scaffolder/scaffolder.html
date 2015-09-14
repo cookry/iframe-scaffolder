@@ -57,7 +57,8 @@
             Twitter
           </a>
           <a socialshare
-             socialshare-text="{{ scaffolder.getActive().label }}"
+             socialshare-text="{{ scaffolder.getActive( 'Iframe ' + ($index + 1) ).label }}"
+             socialshare-description="{{ scaffolder.getActive( 'Iframe ' + ($index + 1) ).description }}"
              socialshare-url="{{ scaffolder.viewUrl(scaffolder.active) }}"
              socialshare-provider="facebook"
              socialshare-type="feed"
