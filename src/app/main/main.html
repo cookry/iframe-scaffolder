@@ -136,7 +136,7 @@
             Export the mosaic
           </p>
           <p>
-            <textarea class="form-control" readonly>{{getViewIframe()}}</textarea>
+            <textarea class="form-control" select-on-click readonly>{{getViewIframe()}}</textarea>
           </p>
           <a class="editor__step__show-more-options" ng-class="{ 'editor__step__show-more-options--active': showMoreOptions}" ng-click="showMoreOptions = !showMoreOptions">
             <i class="caret"></i>&nbsp;
@@ -204,13 +204,13 @@
         </div>
         <div class="panel-heading">
           <div class="input-group">
-            <input class="form-control" type="text" value="{{getViewUrl()}}" readonly />
+            <input class="form-control form-link" type="text" value="{{getViewUrl()}}" select-on-click readonly />
             <span class="input-group-btn">
               <a class="btn btn-link" href="{{getViewUrl()}}" target="_blank" tooltip="Open the iframe in a new window">
                 <i class="fa fa-external-link"></i>
               </a>
               <a class="btn btn-link" tooltip="Permalink to edit the same mosaic" ui-sref="fork(scaffolder.serialized())">
-                <i class="fa fa-edit"></i>
+                <i class="fa fa-pencil-square"></i>
               </a>
             </span>
           </div>
