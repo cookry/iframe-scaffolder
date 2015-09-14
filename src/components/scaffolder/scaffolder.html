@@ -30,16 +30,16 @@
       <img src="assets/images/googletrends.png" height="18" alt="Google  Trends" />
     </a>
     <div class="scaffolder__footer__sharing-toggler" ng-show="options.sharing && scaffolder.hasMenu() && scaffolder.urls.length">
-      <button class="btn btn-xs btn-default" ng-click="displaySharingPopup = !displaySharingPopup">
+      <button class="btn btn-xs btn-default" ng-click="toggleSharingPopup()">
         <i class="fa fa-fw fa-share"></i>
         Share this view
       </button>
     </div>
   </div>
-  <div class="scaffolder__sharing-popup ng-hide" ng-show="displaySharingPopup">
-    <div class="scaffolder__sharing-popup__overlay" ng-click="displaySharingPopup = false"></div>
-    <div class="scaffolder__sharing-popup__panel panel panel-default" ng-show="displaySharingPopup">
-      <button class="scaffolder__sharing-popup__panel__close" ng-click="displaySharingPopup = false">
+  <div class="scaffolder__sharing-popup ng-hide" ng-show="shouldDisplaySharingPopup">
+    <div class="scaffolder__sharing-popup__overlay" ng-click="toggleSharingPopup()"></div>
+    <div class="scaffolder__sharing-popup__panel panel panel-default" ng-show="shouldDisplaySharingPopup">
+      <button class="scaffolder__sharing-popup__panel__close" ng-click="toggleSharingPopup()">
         <span aria-hidden="true">×</span>
       </button>
       <div class="panel-body">
@@ -50,7 +50,7 @@
         <p>
           <a socialshare
              socialshare-text="{{ scaffolder.getActive( 'Iframe ' + ($index + 1) ).label }}"
-             socialshare-url="{{ scaffolder.viewUrl(scaffolder.active) }}"
+             socialshare-url="{{ sharingUrl }}"
              socialshare-provider="twitter"
              class="btn btn-default scaffolder__sharing-popup__panel__twitter">
             <i class="fa fa-fw fa-twitter"></i>
@@ -60,6 +60,7 @@
              socialshare-text="{{ scaffolder.getActive( 'Iframe ' + ($index + 1) ).label }}"
              socialshare-description="{{ scaffolder.getActive( 'Iframe ' + ($index + 1) ).description }}"
              socialshare-url="{{ scaffolder.viewUrl(scaffolder.active) }}"
+             socialshare-url="{{ sharingUrl }}"
              socialshare-provider="facebook"
              socialshare-type="feed"
              socialshare-to=""
@@ -78,7 +79,7 @@
         <textarea class="form-control" select-on-click readonly>{{ getViewIframe() }}</textarea>
         <h3>Link</h3>
         <p>This link will jump directly to this view:</p>
-        <input class="form-control form-link" select-on-click readonly value="{{ scaffolder.viewUrl() }}" />
+        <input class="form-control form-link" select-on-click readonly value="{{ sharingUrl }}" />
       </div>
     </div>
   </div>
