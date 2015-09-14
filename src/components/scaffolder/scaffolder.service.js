@@ -59,11 +59,11 @@ angular.module('iframeScaffolder').service('Scaffolder', function($state) {
     var   label = this.label(this.active, replacement),
     description = this.description;
     // Add label to the description
-    if( label && description ) {
-      description = label + ' - ' + description;
+    if( this.title && description ) {
+      description = this.title + ' - ' + description;
     // Use only the description or the label
     } else {
-      description = description || label;
+      description = description || this.title;
     }
 
     return {
