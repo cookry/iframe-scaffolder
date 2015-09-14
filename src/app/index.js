@@ -21,7 +21,7 @@ angular.module('iframeScaffolder')
         controller: 'ViewCtrl',
       })
       .state('fork', {
-        url: '/fork?urls&layout&theme&title&description',
+        url: '/fork?urls&layout&theme&active&sharing&title&description',
         controller: 'ForkCtrl'
       });
 
