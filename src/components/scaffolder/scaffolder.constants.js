@@ -24,5 +24,18 @@ angular
       },
       shortener: '//white-shortener.herokuapp.com',
       width: 600,
-      height: 450
+      height: 450,
+      themes: [
+        { slug: 'default', label: 'Default' },
+        { slug: 'blue-grey', label: 'Blue grey' },
+        { slug: 'pink', label: 'Pink' },
+        { slug: 'grey', label: 'Grey' },
+        { slug: 'blue', label: 'Blue' },
+        { slug: 'indigo', label: 'Indigo' },
+        { slug: 'red', label: 'Red' },
+        { slug: 'deep-orange', label: 'Deep orange' },
+        { slug: 'yellow', label: 'Yellow' },
+        { slug: 'teal', label: 'Teal' },
+        { slug: 'green', label: 'Gree' }
+      ]
     });
