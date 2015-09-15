@@ -36,4 +36,11 @@
   .scaffolder__container__title {
     color:@iframe-color;
   }
+
+  .iframe-indicator--loading:after {
+    @bg-color: replace( ~"@{hover-color}", "#", "");
+    @bg-url: "//logo-js.herokuapp.com/loading-bars/@{bg-color}";
+    background-image: url(@bg-url);
+    background-color: @hover-bg;
+  }
 }
