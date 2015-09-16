@@ -7,8 +7,13 @@
   &__container {
     width: 100%;
     position:relative;
+    background:inherit;
 
     &__menu {
+
+      background:inherit;
+      position: relative;
+      z-index:100;
 
       &__item {
         cursor: pointer;
@@ -31,6 +36,7 @@
 
   &--menu &__container__menu {
     width:25%;
+    height:100%;
     padding:5px;
     a {
       border-right:transparent 3px solid;
@@ -75,6 +81,7 @@
   &--tail {
     .scaffolder__container__iframe {
       margin-right:50%;
+      width:50%
     }
 
     .scaffolder__container__iframe--last {
@@ -82,6 +89,7 @@
       position:absolute;
       right:0;
       top:0;
+      width:50%
     }
   }
 
@@ -161,6 +169,8 @@
     background:white;
     width: 100%;
     padding:10px 15px;
+    z-index:100;
+    position: relative;
   }
 
   &__footer {
@@ -169,6 +179,7 @@
     border-top:1px solid #ddd;
     background:white;
     position:relative;
+    z-index:110;
 
     &__sharing-toggler {
       position: absolute;
@@ -182,6 +193,7 @@
   &__sharing-popup {
 
     position: absolute;
+    z-index:120;
     top:0;
     left:0;
     bottom:0;
