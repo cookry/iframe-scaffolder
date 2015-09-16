@@ -32,8 +32,22 @@
     <a target="_blank" href="//www.google.com/trends/">
       <img src="assets/images/googletrends.png" height="18" alt="Google  Trends" />
     </a>
-    <div class="scaffolder__footer__sharing-toggler" ng-show="options.sharing && scaffolder.hasMenu() && scaffolder.urls.length">
-      <button class="btn btn-xs btn-default" ng-click="toggleSharingPopup()">
+    <div class="scaffolder__footer__sharing-toggler" ng-show="scaffolder.hasMenu() && scaffolder.urls.length">
+      <button class="btn btn-xs"
+              ng-show="options.autoplay"
+              ng-click="scaffolder.toggleAutoplay()"
+              ng-class="{
+                'btn-default': !scaffolder.autoplayPlaying,
+                'btn-primary': scaffolder.autoplayPlaying
+              }">
+        <i class="fa fa-fw" ng-class="{
+          'fa-play': !scaffolder.autoplayPlaying,
+          'fa-pause': scaffolder.autoplayPlaying
+        }"></i>
+      </button>
+      <button class="btn btn-xs btn-default"
+              ng-show="options.sharing"
+              ng-click="toggleSharingPopup()">
         <i class="fa fa-fw fa-share"></i>
         Share this view
       </button>
