@@ -25,7 +25,7 @@ angular
       shortenerInterface: '//white-shortener.herokuapp.com',
       shortenerProvider: 'goo.gl',
       width: 600,
-      height: 450,
+      height: 550,
       themes: [
         { slug: 'default', label: 'Default' },
         { slug: 'blue-grey', label: 'Blue grey' },
