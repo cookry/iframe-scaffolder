@@ -1,1 +1,100 @@
-<h1>Hello!</h1>
+<!doctype html>
+<html class="no-js" ng-app="iframeScaffolder">
+  <head>
+    <meta charset="utf-8">
+    <title>Data from WSP</title>
+    <meta name="description" content="This tool helps you to quickly arrange several iframes together.">
+    <meta name="viewport" content="width=device-width">
+
+    <!-- for Facebook -->
+    <meta property="og:image" content="http://cookry.github.io/iframe-scaffolder/assets/images/iframe.png"/>
+    <meta property="og:title" content="Data from WSP"/>
+    <meta property="og:description" content="This tool helps you to quickly arrange several iframes together.">
+    <meta property="og:site_name" content="WSP Data on Github"/>
+    <meta property="og:type" content="website" />
+
+    <!-- for Twitter -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="Data from WSP - @cookry" />
+    <meta name="twitter:description" content="This tool helps you to quickly arrange several iframes together." />
+    <meta name="twitter:image" content="http://cookry.github.io/iframe-scaffolder/assets/images/iframe.png" />
+
+    <!-- build:css({.tmp,src}) styles/app.css -->
+    <link rel="stylesheet" href="app/index.css">
+    <!-- endbuild -->
+
+    <!-- build:js(.) scripts/modernizr.js -->
+    <script src="bower_components/modernizr/modernizr.js"></script>
+    <!-- endbuild -->
+    <script type="text/javascript">
+      var href = document.location.protocol + "//" + document.location.host + document.location.pathname;
+      document.write("<base href='" + href + "' />");
+    </script>
+  </head>
+  <body>
+    <!--[if lt IE 10]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <div ui-view></div>
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    
+      ga('create', 'UA-84915156-1', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/zeroclipboard/dist/ZeroClipboard.js"></script>
+    <script src="bower_components/angular-zeroclipboard/src/angular-zeroclipboard.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/angular-ui-utils/validate.js"></script>
+    <script src="bower_components/jquery-ui/jquery-ui.js"></script>
+    <script src="bower_components/angular-ui-sortable/sortable.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.js"></script>
+    <script src="bower_components/angular-material/angular-material.js"></script>
+    <script src="bower_components/angularjs-socialshare/dist/angular-socialshare.min.js"></script>
+    <script src="bower_components/velocity/velocity.js"></script>
+    <script src="bower_components/velocity/velocity.ui.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js({src,.tmp}) scripts/app.js -->
+    <script src="app/index.modules.js"></script>
+    <script src="app/index.ga.js"></script>
+    <script src="app/index.js"></script>
+    <script src="app/view/view.js"></script>
+    <script src="app/view/view.controller.js"></script>
+    <script src="app/main/main.js"></script>
+    <script src="app/main/main.controller.js"></script>
+    <script src="app/fork/fork.js"></script>
+    <script src="app/fork/fork.controller.js"></script>
+    <script src="app/shorten/shorten.js"></script>
+    <script src="app/shorten/shorten.controller.js"></script>
+    <script src="components/iframe-indicator/iframe-indicator.directive.js"></script>
+    <script src="components/scaffolder/scaffolder.animation.js"></script>
+    <script src="components/scaffolder/scaffolder.constants.js"></script>
+    <script src="components/scaffolder/scaffolder.controller.js"></script>
+    <script src="components/scaffolder/scaffolder.directive.js"></script>
+    <script src="components/scaffolder/scaffolder.service.js"></script>
+    <script src="components/select-on-click/select-on-click.directive.js"></script>
+
+    <!-- inject:partials -->
+    <!-- angular templates will be automaticaly converted in js and inserted here -->
+    <!-- endinject -->
+    <!-- endbuild -->
+
+  </body>
+</html>
