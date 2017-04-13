@@ -1,0 +1,42 @@
+[
+  {
+    "urls":[
+        "Restaurants|https://googledataorg.cartodb.com/u/googledata/viz/3c95241c-281b-11e5-9be6-42010a14cb63/embed_map/?zoom=3&center_lat=38.0380134&center_lon=-99.6760914",
+        "Recipes|https://googledataorg.cartodb.com/u/googledata/viz/74da3b30-2692-11e5-9756-42010a149c0c/embed_map/?zoom=3&center_lat=38.0380134&center_lon=-99.6760914",
+        "Wine|https://googledataorg.cartodb.com/u/googledata/viz/e2b83668-281b-11e5-a3ce-42010a14cb63/embed_map/?zoom=3&center_lat=38.0380134&center_lon=-99.6760914",
+        "Beer|https://googledataorg.cartodb.com/u/googledata/viz/c19da85c-2823-11e5-9472-42010a149c0c/embed_map/?zoom=3&center_lat=38.0380134&center_lon=-99.6760914",
+        "Coffee|https://googledataorg.cartodb.com/u/googledata/viz/90ca0d1c-2821-11e5-9be6-42010a14cb63/embed_map/?zoom=3&center_lat=38.0380134&center_lon=-99.6760914",
+        "Cocktails|https://googledataorg.cartodb.com/u/googledata/viz/f9e2685c-2822-11e5-81f3-42010a149c0c/embed_map/?zoom=3&center_lat=38.0380134&center_lon=-99.6760914",
+        "Tacos|https://googledataorg.cartodb.com/u/googledata/viz/c88b0e94-281d-11e5-84ef-42010a149c0c/embed_map/?zoom=3&center_lat=38.0380134&center_lon=-99.6760914",
+        "Brunch|https://googledataorg.cartodb.com/u/googledata/viz/1362d588-2822-11e5-84ef-42010a149c0c/embed_map/?zoom=3&center_lat=38.0380134&center_lon=-99.6760914"
+    ],
+    "layout":"tabs",
+    "theme": "indigo",
+    "title": "Food stereotypes",
+    "description": "Portland likes coffee, and other accurate food stereotypes now confirmed by Google"
+  },
+  {
+    "urls": [
+      "Impact: official view|http://charts-datawrapper.s3.amazonaws.com/ecHpQ/index.html?rev=21",
+      "What does it cost?|http://charts-datawrapper.s3.amazonaws.com/VUNcU/index.html?rev=79",
+      "Taxes v spending|http://charts-datawrapper.s3.amazonaws.com/mgalY/index.html?rev=18",
+      "GDP|http://charts-datawrapper.s3.amazonaws.com/q1QdD/index.html?rev=96"
+    ],
+    "layout": "menu",
+    "theme": "red",
+    "title": "The Budget visualised",
+    "description": "4 key charts to tell you what happened"
+  },
+  {
+    "urls": [
+      "Impact: official view|http://charts-datawrapper.s3.amazonaws.com/ecHpQ/index.html?rev=21",
+      "What does it cost?|http://charts-datawrapper.s3.amazonaws.com/VUNcU/index.html?rev=79",
+      "Taxes v spending|http://charts-datawrapper.s3.amazonaws.com/mgalY/index.html?rev=18",
+      "GDP|http://charts-datawrapper.s3.amazonaws.com/q1QdD/index.html?rev=96"
+    ],
+    "layout": "narrative",
+    "theme": "blue",
+    "title": "The Budget visualised",
+    "description": "4 key charts to tell you what happened"
+  }
+]
