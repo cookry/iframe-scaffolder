@@ -1,0 +1,259 @@
+.scaffolder {
+  width: 100%;
+  height: 100%;
+  position:relative;
+  overflow: hidden;
+
+  &__container {
+    width: 100%;
+    position:relative;
+    background:inherit;
+
+    &__menu {
+
+      background:inherit;
+      position: relative;
+      z-index:100;
+
+      &__item {
+        cursor: pointer;
+
+        & > a {
+          color:@text-color;
+        }
+
+        &&.active {
+          font-weight: bold;
+          & > a, & > a:hover {
+            outline:0;
+            color:@text-color;
+            background:@gray-lighter;
+          }
+        }
+      }
+    }
+  }
+
+  &--menu &__container__menu {
+    width:25%;
+    height:100%;
+    padding:5px;
+    a {
+      border-right:transparent 3px solid;
+    }
+  }
+
+  &--menu &__container__iframe {
+    float:none;
+    position:absolute;
+    left:25%;
+    top:0;
+  }
+
+  &--tabs &__container__menu {
+    width:20000%;
+    padding:5px;
+    white-space: nowrap;
+    a {
+      border-bottom:transparent 3px solid;
+    }
+  }
+
+  &--narrative &__container__menu {
+    width:100%;
+    padding:5px;
+    white-space: nowrap;
+  }
+
+  &--head {
+    .scaffolder__container__iframe {
+      margin-left:50%;
+    }
+
+    .scaffolder__container__iframe--first {
+      margin:0;
+      position:absolute;
+      left:0;
+      top:0;
+    }
+  }
+
+  &--tail {
+    .scaffolder__container__iframe {
+      margin-right:50%;
+      width:50%
+    }
+
+    .scaffolder__container__iframe--last {
+      margin:0;
+      position:absolute;
+      right:0;
+      top:0;
+      width:50%
+    }
+  }
+
+  &--tabs &__container__iframe,
+  &--narrative &__container__iframe {
+    position:absolute;
+    top: 50px;
+    left:0;
+    height:~"calc(100% - 50px)";
+  }
+
+  &--narrative &__container__menu {
+    .pull-left, .pull-right {
+      position:relative;
+      a:after, a:before {
+        font-family: "FontAwesome";
+        font-size:0.9em;
+        position: absolute;
+        top:50%;
+        .translate(0, -50%);
+      }
+    }
+
+    .pull-left a {
+      padding-left:30px;
+      &:before {
+        content: "\f053";
+        left:10px;
+      }
+    }
+    .pull-right a {
+      padding-right:30px;
+      &:after {
+        content: "\f054";
+        right:10px;
+      }
+    }
+  }
+
+  &__container__title {
+    display: none;
+    position:absolute;
+    top:10px;
+    left:50%;
+    font-weight:bold;
+    line-height: 30px;
+    height: 30px;
+    margin:0;
+    padding: 0 5px;
+    .translate(-50%, 0);
+  }
+
+  &--narrative &__container__title {
+    display: block;
+  }
+
+  &__container__iframe {
+    display: block;
+    float:left;
+  }
+
+  &__header {
+    padding:0 10px;
+
+    &__title, &__description {
+      margin-top:5px;
+      margin-bottom:0;
+    }
+
+    &__description {
+      font-size:1.2em;
+    }
+  }
+
+  &__header {
+    border-bottom:1px solid #ddd;
+    background:white;
+    width: 100%;
+    padding:10px 15px;
+    z-index:100;
+    position: relative;
+  }
+
+  &__footer {
+    width:100%;
+    padding:5px 15px;
+    border-top:1px solid #ddd;
+    background:white;
+    position:relative;
+    z-index:110;
+    text-align: right;
+
+    &__sharing-toggler {
+      position: absolute;
+      left:5px;
+      top:50%;
+      .translate(0, -50%);
+    }
+  }
+
+
+  &__sharing-popup {
+
+    position: absolute;
+    z-index:120;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    overflow: auto;
+    .transition(0.6s);
+
+    &.ng-hide {
+      opacity: 0;
+    }
+
+    &__overlay {
+      position: absolute;
+      top:0;
+      left:0;
+      bottom:0;
+      right:0;
+      background:fade(white, 50%);
+      .box-shadow(0 0 300px 50px white inset);
+    }
+
+    &__panel {
+      position:absolute;
+      top:50%;
+      left:50%;
+      width:80%;
+      .translate(-50%, -50%);
+      .transition(0.6s);
+
+      &.ng-hide {
+        transform:scale(0.9) translate(-60%, -40%);
+      }
+
+      &__close {
+        font-size: 21px;
+        font-weight: 700;
+        line-height: 1;
+        color: #000;
+        text-shadow: 0px 1px 0px #FFF;
+        float: right;
+        opacity: 0.2;
+        padding: 5px;
+        margin: 5px;
+        cursor: pointer;
+        background: transparent;
+        border: 0;
+      }
+
+      &__twitter,
+      &__twitter:hover {
+        color:#55ACEE;
+      }
+
+      &__facebook,
+      &__facebook:hover {
+        color:#3F4B9A;
+      }
+    }
+
+  }
+
+}
