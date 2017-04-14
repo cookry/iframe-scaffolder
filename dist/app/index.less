@@ -1,0 +1,20 @@
+// Vendors
+@import (less) "../../bower_components/angular-material/angular-material.css";
+@import "bootstrap.loader.less";
+@import "//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css";
+// Internal
+@import "mixins.less";
+@import "main/main.less";
+@import "view/view.less";
+@import "iframe-indicator/iframe-indicator.less";
+@import "scaffolder/scaffolder.less";
+@import "themes/themes.less";
+
+a, a:hover { cursor:pointer }
+html { background: @body-bg; }
+html .checkbox label { font-weight: bold; }
+
+.form-control.form-link {
+  text-decoration:underline;
+  color: mix(@link-color, @input-color);
+}

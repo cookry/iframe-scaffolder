@@ -1,0 +1,262 @@
+<div class="introduction">
+  <a class="introduction__logo-container" target="_blank" href="//www.google.com/trends/">
+    <md-button class="md-fab md-mini" aria-label="Back to Google Trends" class="introduction__logo-container__arrow">
+      <md-icon md-svg-src="assets/images/arrow_back.svg"></md-icon>
+    </md-button>
+    <md-icon aria-label="Google" class="introduction__logo-container__google"></md-icon>
+    <h1 class="introduction__logo-container__trends">Trends</h1>
+  </a>
+  <div class="container">
+    <h2>Data from Google</h2>
+    <p class="lead text-muted">This tool helps you to quickly arrange several iframes together.</p>
+  </div>
+</div>
+<div class="container">
+  <div class="row editor">
+    <div class="col-md-4">
+      <div class="panel editor__step panel-default">
+        <div class="editor__step__label"></div>
+        <form class="panel-body" name="addUrlForm" role="form" ng-submit="addUrl()">
+          <div class="input-group">
+            <input type="text" required ui-validate="{ isUrl: 'isUrlValid($value)' }" name="newUrl" ng-model="newUrl" class="form-control" placeholder="An URL or an iframe code" />
+            <span class="input-group-btn">
+              <button class="btn btn-primary" ng-disabled="!addUrlForm.$valid" type="submit" tooltip="Create an iframe with this URL">
+                Add
+              </button>
+            </span>
+          </div>
+          <div ng-show="addUrlForm.newUrl.$error.isUrl && !addUrlForm.newUrl.$error.required" class="editor__step__error text-danger small">
+            This is not a valid URL or iframe.
+          </div>
+        </form>
+        <ul class="list-group" ui-sortable ng-model="options.urls">
+          <li class="list-group-item editor__step__url" ng-repeat="url in options.urls track by $index">
+            <div>
+              <div class="btn-group btn-group-xs pull-right editor__step__url__actions">
+                <button type="button" class="btn btn-default" tooltip="Change the label describing this iframe" ng-click="editLabel($index)">
+                  Edit label
+                </button>
+                <button type="button" class="btn btn-default" ng-click="removeUrl($index)" tooltip="Remove this iframe">
+                  <i class="fa fa-trash-o"></i>
+                </button>
+              </div>
+              <a ng-href="{{scaffolder.url($index, true)}}" target="_blank" class="editor__step__url__value">
+                {{scaffolder.label($index)}}
+              </a>
+            </div>
+            <form ng-submit="saveLabel($index)" ng-show="!!labels[$index] || labels[$index] === ''" class="editor__step__url__edit-label">
+              <div class="input-group input-group-sm">
+                <input type="text" ng-model="labels[$index]" class="form-control" />
+                <span class="input-group-btn">
+                  <button class="btn btn-default" type="submit">
+                    Save
+                  </button>
+                </span>
+              </div>
+            </form>
+          </li>
+        </ul>
+      </div>
+      <div class="panel editor__step panel-default" ng-class="{ 'editor__step--disable': !options.urls.length }">
+        <div class="editor__step__label"></div>
+        <div class="panel-body">
+          <p>
+            Choose a layout&nbsp;
+            <small class="text-muted">(how iframes are arranged)</small>
+          </p>
+          <div class="text-center btn-group">
+            <button class="btn btn-default btn-sm" ng-class="{active: options.layout == 'menu'}" ng-click="options.layout = 'menu'" tooltip="Toggle iframes using a menu">
+              ≡◻
+            </button>
+            <button class="btn btn-default btn-sm" ng-class="{active: options.layout == 'narrative'}" ng-click="options.layout = 'narrative'" tooltip="Toggle iframes using next and previous buttons">
+              ⍃ ⍄
+            </button>
+            <button class="btn btn-default btn-sm" ng-class="{active: options.layout == 'tabs'}" ng-click="options.layout = 'tabs'" tooltip="Toggle iframes using tabs">
+              ⎍⎍
+            </button>
+            <button class="btn btn-default btn-sm" ng-class="{active: options.layout == 'horizontal'}" ng-click="options.layout = 'horizontal'" tooltip="All iframes have equal width">
+              ▯▯▯
+            </button>
+            <button class="btn btn-default btn-sm" ng-class="{active: options.layout == 'head'}" ng-click="options.layout = 'head'" tooltip="The first iframe use half of the screen, the others a stacked">
+              ▯▤
+            </button>
+            <button class="btn btn-default btn-sm" ng-class="{active: options.layout == 'tail'}" ng-click="options.layout = 'tail'" tooltip="The last iframe use half of the screen, the others a stacked">
+              ▤▯
+            </button>
+
+          </div>
+        </div>
+      </div>
+      <div class="panel editor__step panel-default" ng-class="{ 'editor__step--disable': !options.urls.length }">
+        <div class="editor__step__label"></div>
+        <div class="panel-body">
+          <div class="pull-right" dropdown>
+            <span class="btn-group">
+              <i class="scaffolder--{{options.theme}}__preview editor__step__theme-preview disabled btn btn-xs"></i>
+              <button class="btn btn-default btn-xs" dropdown-toggle>
+                {{ getTheme(options.theme).label }} &nbsp;<i class="caret"></i>
+              </button>
+            </span>
+            <ul class="dropdown-menu" role="menu">
+              <li ng-repeat="theme in themes" class="editor__step__theme">
+                <a ng-click="options.theme = theme.slug">
+                  <i class="scaffolder--{{theme.slug}}__preview editor__step__theme__preview"></i>
+                  {{theme.label}}
+                </a>
+              </li>
+            </ul>
+          </div>
+          Choose a theme&nbsp;
+        </div>
+      </div>
+      <div class="panel editor__step panel-default" ng-class="{ 'editor__step--disable': !options.urls.length }">
+        <div class="editor__step__label"></div>
+        <div class="panel-body form-horizontal">
+          <div class="form-group">
+            <label for="input-title" class="control-label col-sm-4">Choose a title</label>
+            <div class="col-sm-8">
+              <input type="text" class="form-control" ng-model="options.title" id="input-title">
+            </div>
+          </div>
+          <div class="form-group editor__step__last-group">
+            <label for="input-description" class="control-label col-sm-4">Describe</label>
+            <div class="col-sm-8">
+              <textarea class="form-control" ng-model="options.description" id="input-description"></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="panel editor__step panel-default" ng-class="{ 'editor__step--disable': !options.urls.length }">
+        <div class="editor__step__label"></div>
+        <div class="panel-body">
+          <p>
+            <button class="btn btn-primary btn-xs pull-right" ui-zeroclip zeroclip-model="getViewIframe()" title="Copy the embed code to you clipboard.">
+              Copy
+            </button>
+            Export the mosaic
+          </p>
+          <p>
+            <textarea class="form-control" select-on-click readonly>{{getViewIframe()}}</textarea>
+          </p>
+          <a class="editor__step__show-more-options" ng-class="{ 'editor__step__show-more-options--active': showMoreOptions}" ng-click="showMoreOptions = !showMoreOptions">
+            <i class="caret"></i>&nbsp;
+            More options
+          </a>
+        </div>
+        <div ng-show="showMoreOptions">
+          <div class="editor__step__option">
+            <div class="pull-left editor__step__iframe-label">
+              <strong>Change the size&nbsp;</strong><br />
+              <label class="editor__step__iframe-label__fluid">
+                <input type="checkbox" ng-model="useFluid" />
+                Use a fluid width
+              </label>
+            </div>
+            <div class="text-right editor__step__iframe-size">
+              <input type="number" ng-disabled="useFluid" ng-model="width" min="50" class="form-control input-sm editor__step__iframe-size__size" />
+              x
+              <input type="number" ng-model="height" min="50" class="form-control input-sm editor__step__iframe-size__size" />
+            </div>
+          </div>
+          <fieldset ng-disabled="!scaffolder.hasMenu()" class="editor__step__options-group">
+            <div class="editor__step__not-available" ng-show="!scaffolder.hasMenu()">
+              <div class="editor__step__not-available__label">
+                Not available for this layout
+              </div>
+            </div>
+            <div class="editor__step__option">
+              <div class="row">
+                <div class="col-xs-6">
+                  <label for="input-autoplay">
+                    Choose the 1<sup>st</sup> iframe
+                  </label>
+                </div>
+                <div class="col-xs-6">
+                  <select id="input-active" ng-model="options.active" class="form-control input-sm">
+                    <option value="{{$index}}" ng-repeat="url in options.urls track by $index">
+                      {{scaffolder.label($index)}}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="editor__step__option">
+              <div class="row">
+                <div class="col-xs-6">
+                  <label for="input-autoplay">
+                    Autoplay to the next
+                  </label>
+                </div>
+                <div class="col-xs-6">
+                  <select id="input-autoplay" ng-model="options.autoplay" class="form-control input-sm">
+                    <option value="0">Do not autoplay</option>
+                    <option value="1">Every 1 second</option>
+                    <option value="2">Every 2 seconds</option>
+                    <option value="4">Every 4 seconds</option>
+                    <option value="8">Every 8 seconds</option>
+                    <option value="16">Every 16 seconds</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="editor__step__option">
+              <div class="checkbox">
+                <label for="input-loop">
+                  <input type="checkbox" ng-model="options.loop" ng-true-value="1" ng-false-value="0" id="input-loop" />
+                  Loop autoplay
+                </label>
+                <p class="text-muted small">When reaching the end of the autoplay.</p>
+              </div>
+            </div>
+            <div class="editor__step__option">
+              <div class="checkbox">
+                <label for="input-sharing">
+                  <input type="checkbox" ng-model="options.sharing" ng-true-value="1" ng-false-value="0" id="input-sharing" />
+                  Allow iframe sharing
+                </label>
+                <p class="text-muted small">The user will be able to share each iframe individually.</p>
+              </div>
+            </div>
+          </fieldset>
+        </div>
+      </div>
+      <div class="text-muted small editor__credits hidden-xs hidden-sm"></div>
+    </div>
+    <div class="col-md-8">
+      <div class="panel panel-default editor__preview">
+        <div class="editor__preview__empty-alert" ng-hide="options.urls.length">
+          <div class="lead editor__preview__empty-alert__message">
+            <p>
+              Add an iframe's URL on the <span class="hidden-sm hidden-xs">left&nbsp;</span>panel to preview the mosaic here.
+            </p>
+            <p>
+              <a ng-click="pickExample()" class="btn btn-link" ng-show="examples.length">
+                See an example.
+              </a>
+              {{example}}
+            </p>
+          </div>
+        </div>
+        <div class="panel-heading">
+          <div class="input-group">
+            <input class="form-control form-link" type="text" value="{{getViewUrl()}}" select-on-click readonly />
+            <span class="input-group-btn">
+              <a class="btn btn-link" href="{{getViewUrl()}}" target="_blank" tooltip="Open the iframe in a new window">
+                <i class="fa fa-external-link"></i>
+              </a>
+              <a class="btn btn-link" tooltip="Permalink to edit the same mosaic" ui-sref="fork(scaffolder.serialized())">
+                <i class="fa fa-pencil-square"></i>
+              </a>
+            </span>
+          </div>
+        </div>
+        <div class="editor__preview__scaffolder">
+          <scaffolder options="options" />
+        </div>
+      </div>
+      <div class="editor__credits text-right">
+        Forked from <a href="https://github.com/pirhoo/iframe-scaffolder" target="_blank">Iframe Scaffolder</a> by <a href="http://jplusplus.org" target="_blank">Journalism++</a>
+      </div>
+    </div>
+  </div>
+</div>
